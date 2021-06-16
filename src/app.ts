@@ -1,7 +1,8 @@
-const loginBtn: Element = document.getElementById("login")!;
-const addToListBtn: Element = document.getElementById("adduser")!;
-let addToListInput: Element = document.getElementById("adduserinput")!;
-const userLoggedIn: boolean = false;
+const loginBtn: HTMLButtonElement = document.getElementById("login")! as HTMLButtonElement;
+const addToListBtn: HTMLButtonElement = document.getElementById("adduser")! as HTMLButtonElement;
+let addToListInput: HTMLInputElement = document.getElementById("adduserinput")! as HTMLInputElement;
+let userLoggedIn: boolean = false;
+
 interface ITodolist {
   todo: string[];
   addToList(text: string): void;
@@ -29,7 +30,7 @@ function renderList(todoList: string[]): void {
         <div>
           <button id="${index}done">Done</button>
           <button id="${index}edit">Edit</button>
-          <button onclick="deleteEvent();">Delete</button>
+          <button onclick="deleteEvent(this);">Delete</button>
         </div>
       </div>`;
   });
@@ -42,13 +43,13 @@ const deleteEvent = (button: HTMLButtonElement) => {
   renderList(todoList.todo);
 };
 
-const editHandler = (button: HTMLButtonElement) => {};
+// const editHandler = (button: HTMLButtonElement) => {};
 
-addToListBtn.addEventListener("click", function () {
-  if (addToListInput.nodeValue == "") return;
+const addEvent = () => {
+  if (addToListInput.value == "") return;
   else {
-    todoList.addToList(addToListInput.nodeValue!);
+    todoList.addToList(addToListInput.value!);
     renderList(todoList.todo);
-    addToListInput.nodeValue = "";
+    addToListInput.value = "";
   }
-});
+};
