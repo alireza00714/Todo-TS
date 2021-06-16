@@ -1,7 +1,6 @@
 const loginBtn: HTMLButtonElement = document.getElementById("login")! as HTMLButtonElement;
 const addToListBtn: HTMLButtonElement = document.getElementById("adduser")! as HTMLButtonElement;
 let addToListInput: HTMLInputElement = document.getElementById("adduserinput")! as HTMLInputElement;
-let userLoggedIn: boolean = false;
 
 interface ITodo {
   text: string;
@@ -91,4 +90,10 @@ addToListInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     addEvent();
   }
+});
+
+loginBtn.addEventListener("click", () => {
+  document.getElementById("loginmsg")!.remove();
+  const userSection: HTMLDivElement = document.getElementById("user-section")! as HTMLDivElement;
+  userSection.classList.remove("hidden");
 });

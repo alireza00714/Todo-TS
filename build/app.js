@@ -2,7 +2,6 @@
 const loginBtn = document.getElementById("login");
 const addToListBtn = document.getElementById("adduser");
 let addToListInput = document.getElementById("adduserinput");
-let userLoggedIn = false;
 let todoList = {
     todo: [],
     addToList(text) {
@@ -74,5 +73,10 @@ addToListInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         addEvent();
     }
+});
+loginBtn.addEventListener("click", () => {
+    document.getElementById("loginmsg").remove();
+    const userSection = document.getElementById("user-section");
+    userSection.classList.remove("hidden");
 });
 //# sourceMappingURL=app.js.map
